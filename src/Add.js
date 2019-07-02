@@ -43,7 +43,7 @@ const AddYear = ({ onChange, value }) => (
     />
 )
 
-export default AddPerson
-export default AddHobby
-export default AddPassion
-export default AddYear
+export AddPerson;
+export AddHobby;
+export AddPassion;
+export AddYear;

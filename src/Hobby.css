@@ -1,0 +1,9 @@
+.inline {
+    display: inline-block;
+}
+#Delete {
+    background-color: lightpink;
+    border: solid;
+    border-width: thick;
+    border-color: darkred;
+}

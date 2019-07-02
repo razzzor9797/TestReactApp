@@ -1,7 +1,8 @@
 import React from 'react';
-import './Person.css';
+import './HobbiesList.css';
+import Hobby from './Hobby';
 
-export default class PersonsList extends React.Component {
+export default class HobbiesList extends React.Component {
     state = {
         searchString: '',
         personsIds: []
@@ -13,11 +14,26 @@ export default class PersonsList extends React.Component {
     };
 
     render() {
-        return{
-        <div className = "Person">
-            <button onClick = {this.handleClick}>{this.props.name}</button>
-        </div>
-    }
+        const data = this.props.hobbies
+        if (data) {
+            const hobbies = data.map(hobby => {
+                return (<Hobby name={hobby}/>)
+            })
+        }
+
+        return (
+            <div className = "PersonList">
+                <select className = "inline" placeholder="Select passion level">
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+                </select>
+                <input type = "text" className = "inline" placeholder="Enter user hobby"/>
+                <input type = "number" className = "inline" placeholder="Enter year"/>
+                <button className = "inline">Add</button>
+                {/*{hobbies}*/}
+            </div>
+        )
     }
 }
 

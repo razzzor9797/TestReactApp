@@ -1,6 +1,8 @@
 .App {
   text-align: center;
 }
-.PersonsList{
-  
+
+.inline {
+  position: relative;
+  display: inline-block;
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import AddPerson from 'Add.js';
-import './Person.css';
+import './PersonsList.css';
+import Person from './Person.js'
 
 export default class PersonsList extends React.Component {
     state = {
-        personName: '',
+        personsNames: [],
         personsIds: []
     };
 
@@ -14,14 +14,21 @@ export default class PersonsList extends React.Component {
     };
 
     render() {
-        return{
+
+        const { searchString, personsIds, error } = this.state
+
+        const data = this.props.persons
+
+        const persons = data.map(personName => {
+            return (<Person name={personName}/>)
+        })
+
+        return (
         <div className = "PersonList">
-            <AddPerson className = "PersonSearch" onChange={this.handleSearch} value={personName} />
-            <div className = "Person">
-                <button onClick = {this.handleClick}>{this.props.name}</button>
-            </div>
+            <input type = "text" className = "AddPerson" placeholder="Enter person name" onChange={this.handleSearch} value={this.personName} />
+            {persons}
         </div>
-        }
+        )
     }
 }
 
