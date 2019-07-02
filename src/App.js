@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import PersonsList from './PersonsList.js';
 import HobbiesList from './HobbiesList.js';
+import configureStore from './store/configureStore';
+
+const sotre = configureStore();
 
 const tempPersonsArr = ['Jack', 'John', 'Jill'];
 
