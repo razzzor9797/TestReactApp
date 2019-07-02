@@ -2,7 +2,14 @@
   text-align: center;
 }
 
+.row{
+  display: flex;
+  width:calc(100% - 20px)
+}
+
 .inline {
-  position: relative;
-  display: inline-block;
+  border: 1px solid;
+  display: inline;
+  height:calc(100% - 20px);
+  width:calc(100% - 20px)
 }

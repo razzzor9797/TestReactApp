@@ -4,18 +4,28 @@ import './App.css';
 import PersonsList from './PersonsList.js';
 import HobbiesList from './HobbiesList.js';
 
-
 const tempPersonsArr = ['Jack', 'John', 'Jill'];
 
-const tempPersonHobbies = [];
+class App extends React.Component {
+    state = {
+        chosenPerson: "Initial Value",
+    };
 
-const element = (
-    <div className="Page">
-        <h2>User Hobbies</h2>
-        <div classname = "inline"><PersonsList persons = {tempPersonsArr}/></div>
-        <div classname = "inline"><HobbiesList /></div>
-    </div>
+    handlePersonChoose= ( inputValue ) =>
+        this.setState({inputValue})
+
+    render(){
+        return (
+        <div class="Page">
+            <h2>User Hobbies</h2>
+            <div class="row">
+                <div class="inline"><PersonsList handlePersonChoose = {this.handlePersonChoose()} persons={tempPersonsArr}/></div>
+                <div class="inline"><HobbiesList chosenPerson={this.state.chosenPerson}/></div>
+            </div>
+        </div>)}
+}
+
+ReactDOM.render(
+    <App />,
+    document.getElementById("root")
 )
-
-ReactDOM.render(element,
-        document.getElementById('root'))

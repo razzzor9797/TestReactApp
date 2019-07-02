@@ -1,3 +1,8 @@
-div {
+.PersonListOptions {
     position: relative;
+    display: inline-block;
+}
+.Persons{
+    height:80px;
+    overflow: scroll;
 }

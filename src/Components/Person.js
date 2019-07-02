@@ -8,13 +8,9 @@ export default class Person extends React.Component {
          name: PropTypes.string
      };
 
-    handleClick = () => {
-        this.props.clickHandler(this.props.id)
-    };
-
     render() {
         return(
-            <div className = "Person" onClick = {this.handleClick}>{this.props.name}</div>
+            <div className = "Person" onClick = {(e) => this.props.handlePersonChoose(e.target.value)}>{this.props.name}</div>
         )
     }
 }

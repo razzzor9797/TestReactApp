@@ -1,3 +1,7 @@
-.inline {
+.HobbiesListOptions {
     display: inline-block;
+}
+.Hobbies{
+    height:calc(100% - 20px);
+    overflow: scroll;
 }
