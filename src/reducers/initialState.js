@@ -1,3 +1,3 @@
 export default{
-    person:""
+    ChosenPerson:"12"
 };

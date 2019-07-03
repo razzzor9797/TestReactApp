@@ -1,8 +1,11 @@
 import {combineReducers} from 'redux';
-import person from './personReducers';
+import personReducer from './personReducers';
 
-const rootReducer = combineReducers({
-    person
-});
+const rootReducer = () => {
+    //console.log('8');
+    combineReducers({
+        personReducer
+    });
+}
 
 export default rootReducer;

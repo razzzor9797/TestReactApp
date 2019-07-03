@@ -9,8 +9,9 @@ export default class Person extends React.Component {
      };
 
     render() {
+        const value = this.props.person;
         return(
-            <div className = "Person" onClick = {(e) => this.props.handlePersonChoose(e.target.value)}>{this.props.name}</div>
+            <div className = "Person" onClick={() => this.props.choosePerson(value)}>{this.props.person}</div>
         )
     }
 }
