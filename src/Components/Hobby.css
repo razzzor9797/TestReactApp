@@ -1,9 +1,21 @@
 .inline {
-    display: inline-block;
+}
+.HobbyParent{
+    display: flex;
+}
+#Hobby{
+    width: 50%;
+}
+#Passion{
+    width: 20%;
+}
+#Year{
+    width: 20%;
 }
 #Delete {
     background-color: lightpink;
     border: solid;
     border-width: thick;
     border-color: darkred;
+    width: 1%;
 }

@@ -2,46 +2,50 @@ import React from 'react';
 import './PersonsList.css';
 import Person from './Components/Person.js'
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import choosePerson from './actions/personActions';
-import PropTypes from 'prop-types';
+import {choosePerson, addPerson} from './actions/personActions';
+import propTypes from 'prop-types';
+import initialState from "./reducers/initialState";
 
-export function PersonsList({personsList, choosePerson}){
-    // clickHandler(e, name) { // HERE WE ARE TRIGGERING THE ACTION
-    //     console.log('2' + JSON.stringify(e));
-    //     //personActions.choosePerson(e);
-    // }
 
-    return(
-        <div className = "PersonList">
-            <input type = "text" className = "PersonListOptions" placeholder="Enter person name" />
-            <button className = "PersonListOptions">Add</button>
+//@connect(mapStateToProps, mapDispatchToProps)
+class PersonsList extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+
+     clickHandler(e) { // HERE WE ARE TRIGGERING THE ACTION
+         choosePerson(e);
+    }
+
+    handleNewPersonName(e){
+        this.setState({newPersonName: e.target.value});
+    }
+
+    addNewPerson(){
+        console.log(JSON.stringify(this.state.newPersonName));
+        this.props.addPerson(this.state.newPersonName);
+    };
+
+    render(){
+        return <div className = "PersonList">
+            <input id = "newPersonName" type = "text" className = "PersonListOptions" placeholder="Enter person name" onChange = {this.handleNewPersonName.bind(this)}/>
+            <button className = "PersonListOptions" onClick = {this.addNewPerson.bind(this)}>Add</button>
             <div className = "Persons">
-                {personsList.map(personName => {
-                    return (<Person choosePerson = {choosePerson} person = {personName}/>)
+                {this.props.personsList.map(personName => {
+                    return (<Person key={personName} choosePerson = {this.clickHandler} person = {personName}/>)
                 })}
             </div>
         </div>
-    )
+    }
 }
 
-PersonsList.propTypes = {
-    personActions: PropTypes.object,
-    persons: PropTypes.array
-};
 
 function mapStateToProps(state) {
-    return {
-        //persons: state.persons
-    };
+    console.log('(PersonsList) mapStateToProps: ' +JSON.stringify(state.personReducer.personsList));
+    return {personsList: state.personReducer.personsList};
 }
 const mapDispatchToProps = dispatch => ({
-    choosePerson: data => {
-        dispatch(choosePerson(data))}
+    addPerson: data => dispatch(addPerson(data))
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(PersonsList);
-
+export default connect(mapStateToProps,mapDispatchToProps)(PersonsList)

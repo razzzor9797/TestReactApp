@@ -3,9 +3,9 @@ import personReducer from './personReducers';
 
 const rootReducer = () => {
     //console.log('8');
-    combineReducers({
+    return combineReducers({
         personReducer
     });
-}
+};
 
 export default rootReducer;

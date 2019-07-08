@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+#PersonList{
+  width: 20%;
+  height: 100%;
+}
+
+#HobbyList{
+  width: 80%;
+  height: 100%;
+}

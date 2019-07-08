@@ -1,7 +1,24 @@
 .HobbiesListOptions {
     display: inline-block;
+    position: relative;
 }
 .Hobbies{
     height:calc(100% - 20px);
     overflow: scroll;
+}
+.HobbiesList{
+    width: 100%;
+}
+
+#PassionOption{
+  width:20%;
+}
+#HobbyOption{
+     width:50%;
+}
+#YearOption{
+      width:20%;
+}
+#DeleteOption{
+    width:10%;
 }

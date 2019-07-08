@@ -3,23 +3,20 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import './App.css';
 import PersonsList from './PersonsList.js';
 import HobbiesList from "./HobbiesList";
 
 const store = configureStore();
 
-const tempPersonsArr = ['Jack', 'John', 'Jill'];
 
 ReactDOM.render(
     <Provider store = {store}>
-        <div class="Page">
+        <div className="Page">
             <h2>User Hobbies</h2>
-            <div class="row">
-                <div class="inline"><PersonsList personsList={tempPersonsArr}/></div>
-                <div class="inline"><HobbiesList  chosenPerson = {store.getState()}/></div>
+            <div className="row">
+                <div id = "PersonList" className="inline"><PersonsList/></div>
+                <div id = "Hobby" className="inline"><HobbiesList/></div>
             </div>
         </div>
     </Provider>,

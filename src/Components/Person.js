@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Person.css';
+import {choosePerson} from "../actions/personActions";
+import {connect} from "react-redux";
 
-export default class Person extends React.Component {
+export class Person extends React.Component {
      static propTypes ={
          id: PropTypes.number,
-         name: PropTypes.string
+         person: PropTypes.string
      };
 
     render() {
@@ -15,4 +17,14 @@ export default class Person extends React.Component {
         )
     }
 }
+function mapStateToProps(state) {
+    return {
+        //persons: state.persons
+    };
+}
+const mapDispatchToProps = dispatch => ({
+    choosePerson: data => {
+        dispatch(choosePerson(data))}
+});
 
+export default connect(mapStateToProps,mapDispatchToProps)(Person)
