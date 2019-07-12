@@ -1,30 +1,33 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './Person.css';
 import {choosePerson} from "../actions/personActions";
 import {connect} from "react-redux";
+import * as API from "../APIUtils";
+
+const url = 'http://localhost:3001/persons';
 
 export class Person extends React.Component {
-     static propTypes ={
-         id: PropTypes.number,
-         person: PropTypes.string
-     };
-
     render() {
-        const value = this.props.person;
-        return(
-            <div className = "Person" onClick={() => this.props.choosePerson(value)}>{this.props.person}</div>
+        const value = this.props.person._id;
+        return (
+            <div className="Person" onClick={() => {
+                API.get(url.concat('/' + value + "/hobbies"))
+                    .then((res) => {
+                        this.props.choosePerson(res)
+                    });
+            }}>{this.props.person.name}</div>
         )
     }
 }
+
 function mapStateToProps(state) {
-    return {
-        //persons: state.persons
-    };
+    return {};
 }
+
 const mapDispatchToProps = dispatch => ({
     choosePerson: data => {
-        dispatch(choosePerson(data))}
+        dispatch(choosePerson(data))
+    }
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Person)
+export default connect(mapStateToProps, mapDispatchToProps)(Person)
