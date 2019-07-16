@@ -1,3 +1,5 @@
 export default{
-    person:""
+    personsList:[],
+    chosenPerson:"",
+    hobbies: {}
 };

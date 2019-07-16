@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
+import configureStore from './store/configureStore';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import './App.css';
 import PersonsList from './PersonsList.js';
+import HobbiesList from "./HobbiesList";
 
-// import HobbiesList from 'HobbiesList.js';
+const store = configureStore();
+ReactDOM.render(
+    <Provider store={store}>
+        <div className="Page">
+            <h2>User Hobbies</h2>
+            <div className="row">
+                <div id="PersonList" className="inline"><PersonsList/></div>
+                <div id="HobbiesList" className="inline"><HobbiesList/></div>
+            </div>
+        </div>
+    </Provider>,
+    document.getElementById("root")
+);
 
-// ReactDOM.render(
-//     <div id = "root" className="Page">
-//         <PersonsList/>
-//         {/*<HobbiesList/>*/}
-//     </div>
-// )

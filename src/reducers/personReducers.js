@@ -1,15 +1,18 @@
 import initialState from './initialState';
-import {FETCH_PERSON, RECEIVE_PERSON} from '../actions/actionTypes';
+import {
+    CHOOSE_PERSON,
+    FETCH_PERSON
+} from '../actions/actionTypes';
 
-export default function person(state = initialState.person, action) {
+
+export default function personReducer(state = initialState, action) {
     let newState;
-    switch(action.type) {
+    switch (action.type) {
         case FETCH_PERSON:
-            console.log('FETCH_PERSON Action');
-            return action;
-        case RECEIVE_PERSON:
-            newState = action.person;
-            console.log('RECEIVE_PERSON Action');
+            newState = {...state, personsList: action.personsList.data};
+            return newState;
+        case CHOOSE_PERSON:
+            newState = {...state, chosenPerson: action.chosenPerson};
             return newState;
         default:
             return state;
