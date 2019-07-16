@@ -9,16 +9,15 @@
 .HobbiesList{
     width: 100%;
 }
-
-#PassionOption{
-  width:20%;
+.newHobbyForm{
+    display: flex;
 }
-#HobbyOption{
-     width:50%;
-}
-#YearOption{
-      width:20%;
-}
-#DeleteOption{
-    width:10%;
+.MuiGrid-container {
+     width: 100%;
+     display: flex;
+     flex-wrap: nowrap;
+     box-sizing: border-box;
+ }
+.MuiFormControl-marginNormal{
+    margin: 10px;
 }

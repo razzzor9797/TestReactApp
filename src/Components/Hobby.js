@@ -15,14 +15,6 @@ export class Hobby extends React.Component {
         year: PropTypes.number
     };
 
-    deleteHobby(e) {
-        API.del(url.concat('/' + this.props.personId + '/hobbies/' + this.props.personsHobby._id)).then(() => {
-            API.get(url.concat('/' + this.props.personId + '/hobbies')).then((res) => {
-                this.props.choosePerson(res)
-            });
-        });
-    }
-
     render() {
         return (
             <div className="HobbyParent">

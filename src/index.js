@@ -13,7 +13,7 @@ ReactDOM.render(
             <h2>User Hobbies</h2>
             <div className="row">
                 <div id="PersonList" className="inline"><PersonsList/></div>
-                <div id="Hobby" className="inline"><HobbiesList/></div>
+                <div id="HobbiesList" className="inline"><HobbiesList/></div>
             </div>
         </div>
     </Provider>,

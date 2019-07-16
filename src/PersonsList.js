@@ -4,6 +4,19 @@ import {connect} from 'react-redux';
 import {choosePerson, fetchPerson} from './actions/personActions';
 import * as API from './APIUtils';
 import Person from "./Components/Person"
+import MDCList from '@material-ui/core/List';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Input from '@material-ui/core/Input';
+import {
+    FormControl,
+    InputLabel,
+} from "@material-ui/core";
+
+
 
 const url = 'http://localhost:3001/persons';
 
@@ -16,11 +29,12 @@ class PersonsList extends React.Component {
 
     componentDidMount() {
         this.props.fetchPersonAPI(url);
+        //const personsList = new MDCList(document.getElementById('personsList'));
+        //personsList.singleSelection = true;
     }
 
     clickHandler(e) {
-        const action = {};
-        choosePerson(action);
+        this.props.choosePerson(e);
     }
 
     handleNewPersonName(e) {
@@ -35,16 +49,23 @@ class PersonsList extends React.Component {
     render() {
         const persons = this.props.personsList.map(person => {
             return (
-                <Person key={person._id} choosePerson={this.clickHandler} person={person}/>)
+                <ListItem className = "person">
+                    <ListItemText key={person._id} onClick={() => this.clickHandler(person)} person = {person} primary={person.name}/>
+                </ListItem>)
         });
-        return <div className="PersonList">
-            <input id="newPersonName" type="text" className="PersonListOptions" placeholder="Enter person name"
-                   onChange={this.handleNewPersonName.bind(this)}/>
-            <button className="PersonListOptions" onClick={this.addNewPerson.bind(this)}>Add</button>
-            <div className="Persons">
+        return <Grid className="PersonList">
+            <form className = "newHobbyForm">
+                <FormControl margin="normal" fullWidth>
+                    <InputLabel htmlFor="Name">Name</InputLabel>
+                    <Input id="Name" type="text"
+                           onChange={this.handleNewPersonName.bind(this)}/>
+                </FormControl>
+                <Button id="AddOption" onClick={this.addNewPerson.bind(this)}>Add</Button>
+            </form>
+            <List id = "personsList">
                 {persons}
-            </div>
-        </div>
+            </List>
+        </Grid>
     }
 }
 
@@ -57,7 +78,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchPersonAPI: url => fetchPersonAPI(url, dispatch)
+    fetchPersonAPI: url => fetchPersonAPI(url, dispatch),
+    choosePerson: (data) => dispatch(choosePerson(data))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PersonsList)
